@@ -1,0 +1,271 @@
+﻿Using device: cpu
+Removed 1 duplicate date row(s)
+Rows: 8261 | Date range: 1995-01-02 to 2026-09-28
+Last available date: 2026-09-28 -> predicting 2026-09-29
+Features: 52 | Targets: 4 | Labelled rows: 8229
+
+======================================================================
+PHASE A: BACKTEST ON LAST 10%
+======================================================================
+Train 6664 | Val 741 | Test 823 (2023-07-27 to 2026-09-25)
+Regimes (train rows): Bearish 13%, Sideways 78%, Bullish 10%
+
+Decomposing close prices with causal EEMD ...
+
+Running Genetic Algorithm for SAG-LSTM ...
+  GA generation 1/5: best val RMSE 0.006229 (hidden=256, lr=0.00030, epochs=10)
+  GA generation 2/5: best val RMSE 0.006229 (hidden=256, lr=0.00030, epochs=10)
+  GA generation 3/5: best val RMSE 0.006229 (hidden=256, lr=0.00030, epochs=10)
+  GA generation 4/5: best val RMSE 0.006229 (hidden=256, lr=0.00030, epochs=10)
+  GA generation 5/5: best val RMSE 0.006229 (hidden=256, lr=0.00030, epochs=10)
+GA best: hidden=256, lr=0.00030, epochs=10
+python : C:\Users\User\xau_usd_predictions\train_predict.py:419: UserWarning: enable_nested_tensor is True, but 
+self.use_nested_tensor is False because encoder_layer.norm_first was True
+At line:1 char:340
++ ... redictions; python -u train_predict.py *> outputs\train_log.txt; "exi ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\User\x..._first was True:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  self.transformer = nn.TransformerEncoder(encoder_layer, num_layers=num_layers)
+C:\Users\User\xau_usd_predictions\train_predict.py:480: UserWarning: enable_nested_tensor is True, but 
+self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.encoder = nn.TransformerEncoder(encoder_layer, num_layers=num_layers)
+
+Training LSTM-Transformer (epochs=57, lr=0.00100)
+  [LSTM-Transformer] Epoch 1/57 | train loss 1.36607 | val loss 0.52812 | val RMSE(return) 0.00625
+  [LSTM-Transformer] Epoch 10/57 | train loss 1.31618 | val loss 0.55734 | val RMSE(return) 0.00634
+  [LSTM-Transformer] Epoch 20/57 | train loss 1.23487 | val loss 0.53703 | val RMSE(return) 0.00624
+  [LSTM-Transformer] Epoch 30/57 | train loss 1.21345 | val loss 0.53747 | val RMSE(return) 0.00622
+  [LSTM-Transformer] Epoch 40/57 | train loss 1.15087 | val loss 0.55758 | val RMSE(return) 0.00635
+  [LSTM-Transformer] Epoch 50/57 | train loss 1.02142 | val loss 0.61381 | val RMSE(return) 0.00671
+  [LSTM-Transformer] Epoch 57/57 | train loss 0.92461 | val loss 0.75209 | val RMSE(return) 0.00756
+  Up/Down: test accuracy 52.4% (AUC 0.521; always-up baseline 54.8%)
+
+Training LSTM (epochs=57, lr=0.00100)
+  [LSTM] Epoch 1/57 | train loss 1.33862 | val loss 0.54569 | val RMSE(return) 0.00631
+  [LSTM] Epoch 10/57 | train loss 1.20908 | val loss 0.53248 | val RMSE(return) 0.00622
+  [LSTM] Epoch 20/57 | train loss 1.16684 | val loss 0.54326 | val RMSE(return) 0.00630
+  [LSTM] Epoch 30/57 | train loss 1.12582 | val loss 0.55083 | val RMSE(return) 0.00636
+  [LSTM] Epoch 40/57 | train loss 1.08112 | val loss 0.55990 | val RMSE(return) 0.00642
+  [LSTM] Epoch 50/57 | train loss 1.03874 | val loss 0.57243 | val RMSE(return) 0.00649
+  [LSTM] Epoch 57/57 | train loss 1.01521 | val loss 0.57797 | val RMSE(return) 0.00652
+  Up/Down: test accuracy 52.1% (AUC 0.524; always-up baseline 54.8%)
+
+Training GRU (epochs=57, lr=0.00100)
+  [GRU] Epoch 1/57 | train loss 1.31073 | val loss 0.54528 | val RMSE(return) 0.00629
+  [GRU] Epoch 10/57 | train loss 1.21236 | val loss 0.53292 | val RMSE(return) 0.00621
+  [GRU] Epoch 20/57 | train loss 1.18160 | val loss 0.54472 | val RMSE(return) 0.00630
+  [GRU] Epoch 30/57 | train loss 1.15330 | val loss 0.54551 | val RMSE(return) 0.00632
+  [GRU] Epoch 40/57 | train loss 1.11642 | val loss 0.54957 | val RMSE(return) 0.00634
+  [GRU] Epoch 50/57 | train loss 1.07726 | val loss 0.55840 | val RMSE(return) 0.00639
+  [GRU] Epoch 57/57 | train loss 1.05455 | val loss 0.56685 | val RMSE(return) 0.00644
+  Up/Down: test accuracy 54.1% (AUC 0.530; always-up baseline 54.8%)
+
+Training Transformer (epochs=57, lr=0.00100)
+  [Transformer] Epoch 1/57 | train loss 1.31103 | val loss 0.53649 | val RMSE(return) 0.00626
+  [Transformer] Epoch 10/57 | train loss 1.25498 | val loss 0.53399 | val RMSE(return) 0.00623
+  [Transformer] Epoch 20/57 | train loss 1.22060 | val loss 0.53637 | val RMSE(return) 0.00624
+  [Transformer] Epoch 30/57 | train loss 1.21678 | val loss 0.53227 | val RMSE(return) 0.00622
+  [Transformer] Epoch 40/57 | train loss 1.19535 | val loss 0.53205 | val RMSE(return) 0.00622
+  [Transformer] Epoch 50/57 | train loss 1.17840 | val loss 0.53326 | val RMSE(return) 0.00623
+  [Transformer] Epoch 57/57 | train loss 1.15887 | val loss 0.55025 | val RMSE(return) 0.00635
+  Up/Down: test accuracy 50.8% (AUC 0.500; always-up baseline 54.8%)
+
+Training Transformer-MT (epochs=57, lr=0.00100)
+  [Transformer-MT] Epoch 1/57 | train loss 1.32011 | val loss 0.54833 | val RMSE(return) 0.00634
+  [Transformer-MT] Epoch 10/57 | train loss 1.24220 | val loss 0.53771 | val RMSE(return) 0.00625
+  [Transformer-MT] Epoch 20/57 | train loss 1.18706 | val loss 0.54709 | val RMSE(return) 0.00629
+  [Transformer-MT] Epoch 30/57 | train loss 1.12129 | val loss 0.55492 | val RMSE(return) 0.00637
+  [Transformer-MT] Epoch 40/57 | train loss 1.02389 | val loss 0.59503 | val RMSE(return) 0.00660
+  [Transformer-MT] Epoch 50/57 | train loss 0.94294 | val loss 0.61023 | val RMSE(return) 0.00669
+  [Transformer-MT] Epoch 57/57 | train loss 0.85225 | val loss 0.63724 | val RMSE(return) 0.00691
+  Up/Down: test accuracy 52.1% (AUC 0.523; always-up baseline 54.8%)
+
+Training SAG-LSTM (epochs=10, lr=0.00030)
+  [SAG-LSTM] Epoch 1/10 | train loss 1.32062 | val loss 0.53870 | val RMSE(return) 0.00631
+  [SAG-LSTM] Epoch 10/10 | train loss 1.23753 | val loss 0.54180 | val RMSE(return) 0.00625
+  Up/Down: test accuracy 49.8% (AUC 0.554; always-up baseline 54.8%)
+
+Training LightGBM (one model per target, fixed tree count)
+C:\Users\User\AppData\Roaming\Python\Python314\site-packages\lightgbm\sklearn.py:1106: LGBMDeprecationWarning: The 
+argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+C:\Users\User\AppData\Roaming\Python\Python314\site-packages\lightgbm\sklearn.py:1106: LGBMDeprecationWarning: The 
+argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+C:\Users\User\AppData\Roaming\Python\Python314\site-packages\lightgbm\sklearn.py:1106: LGBMDeprecationWarning: The 
+argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+C:\Users\User\AppData\Roaming\Python\Python314\site-packages\lightgbm\sklearn.py:1106: LGBMDeprecationWarning: The 
+argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+C:\Users\User\AppData\Roaming\Python\Python314\site-packages\lightgbm\sklearn.py:1106: LGBMDeprecationWarning: The 
+argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+  Up/Down classifier: 2000 trees, test accuracy 52.6%
+  best trees per target {'Open': 2000, 'High': 2000, 'Low': 2000, 'Close': 2000} (15s)
+
+Forecasting with amazon/chronos-bolt-small (zero-shot, context 512 days)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits 
+and faster downloads.
+
+Loading weights:   0%|          | 0/143 [00:00<?, ?it/s]
+Loading weights:  13%|█▎        | 19/143 [00:00<00:00, 175.78it/s]
+Loading weights: 100%|██████████| 143/143 [00:00<00:00, 1177.31it/s]
+  1564 days x 4 series forecast in 94s
+
+Ensemble members (top 4 by validation avg RMSE): SAG-LSTM ($10.19), Transformer ($10.34), GRU ($10.44), LightGBM ($10.57)
+
+Up/Down classification on the hold-out (sorted by accuracy):
+                          accuracy  auc  precision_up  recall_up  pred_up_share  val_accuracy
+Always up (baseline)         54.80 0.50         54.80     100.00         100.00         52.09
+GRU                          54.07 0.53         57.92      59.20          56.01         47.77
+Chronos-Bolt                 53.83 0.49         55.14      84.48          83.96         50.07
+Ensemble (mean)              53.22 0.54         58.17      52.11          49.09         46.29
+Ensemble (RMSE-weighted)     53.10 0.54         58.06      51.88          48.97         46.42
+LightGBM                     52.61 0.53         56.50      58.76          56.99         46.96
+LSTM-Transformer             52.37 0.52         57.74      48.78          46.29         52.90
+LSTM                         52.13 0.52         55.67      62.08          61.12         48.58
+Transformer-MT               52.13 0.52         57.85      46.56          44.11         48.45
+Transformer                  50.79 0.50         55.87      48.56          47.63         50.20
+SAG-LSTM                     49.82 0.55         59.05      27.49          25.52         47.77
+Ensemble (stacked)           49.82 0.55         59.05      27.49          25.52         47.77
+
+Stacking weights (validation-fitted, per target):
+             Open  High   Low  Close
+SAG-LSTM    0.200 0.642 0.576  0.255
+Transformer 0.200 0.236 0.135  0.000
+GRU         0.200 0.008 0.128  0.000
+LightGBM    0.200 0.114 0.161  0.000
+Naive       0.200 0.000 0.000  0.745
+
+======================================================================
+MODELS SORTED BY RMSE (backtest hold-out, $ errors)
+======================================================================
+ Rank                    Model  Avg RMSE  Avg MAE  Open RMSE  Open MAE  High RMSE  High MAE  Low RMSE  Low MAE  Close RMSE  Close MAE  Direction %
+    1       Ensemble (stacked)     32.33    18.71       5.74      2.01      29.19     18.55     42.88    22.57       51.51      31.70        52.49
+    2                 SAG-LSTM     32.35    18.66       5.75      2.09      29.47     18.63     42.99    22.29       51.19      31.61        52.49
+    3 Ensemble (RMSE-weighted)     32.52    19.03       5.78      2.07      29.48     18.75     42.98    22.93       51.84      32.38        53.22
+    4          Ensemble (mean)     32.53    19.04       5.78      2.07      29.49     18.76     42.99    22.93       51.85      32.38        53.10
+    5              Transformer     33.04    19.34       5.91      2.08      29.51     18.72     43.73    23.48       53.01      33.09        49.09
+    6                 LightGBM     33.57    19.56       5.69      1.84      30.27     19.55     44.33    23.49       54.00      33.34        51.28
+    7                      GRU     33.74    19.88       6.34      2.57      31.56     19.55     43.70    24.00       53.39      33.42        52.98
+    8                     LSTM     34.55    20.20       6.24      2.56      31.83     19.63     44.35    24.36       55.78      34.26        53.10
+    9           Transformer-MT     35.33    20.65       6.41      2.48      33.85     20.48     44.52    24.55       56.53      35.10        50.67
+   10    Naive (today's close)     40.72    23.93       5.70      1.80      47.16     32.00     58.32    30.12       51.71      31.80          NaN
+   11         LSTM-Transformer     43.92    27.01       6.02      2.66      38.77     24.54     55.57    33.11       75.34      47.72        52.25
+   12             Chronos-Bolt     56.76    33.22      59.59     34.90      52.88     31.22     55.31    31.75       59.25      35.01        53.83
+
+======================================================================
+PHASE B: REFIT ON 100% OF DATA
+======================================================================
+Training rows: 8229 (1995-02-14 to 2026-09-25)
+C:\Users\User\xau_usd_predictions\train_predict.py:419: UserWarning: enable_nested_tensor is True, but 
+self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.transformer = nn.TransformerEncoder(encoder_layer, num_layers=num_layers)
+C:\Users\User\xau_usd_predictions\train_predict.py:480: UserWarning: enable_nested_tensor is True, but 
+self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.encoder = nn.TransformerEncoder(encoder_layer, num_layers=num_layers)
+
+Refitting LSTM-Transformer on all data (epochs=57, lr=0.00100)
+  [LSTM-Transformer] Epoch 1/57 | train loss 1.35269
+  [LSTM-Transformer] Epoch 10/57 | train loss 1.25503
+  [LSTM-Transformer] Epoch 20/57 | train loss 1.22797
+  [LSTM-Transformer] Epoch 30/57 | train loss 1.20865
+  [LSTM-Transformer] Epoch 40/57 | train loss 1.13126
+  [LSTM-Transformer] Epoch 50/57 | train loss 1.03064
+  [LSTM-Transformer] Epoch 57/57 | train loss 0.94657
+
+Refitting LSTM on all data (epochs=57, lr=0.00100)
+  [LSTM] Epoch 1/57 | train loss 1.33961
+  [LSTM] Epoch 10/57 | train loss 1.21713
+  [LSTM] Epoch 20/57 | train loss 1.17766
+  [LSTM] Epoch 30/57 | train loss 1.13452
+  [LSTM] Epoch 40/57 | train loss 1.09489
+  [LSTM] Epoch 50/57 | train loss 1.05783
+  [LSTM] Epoch 57/57 | train loss 1.03710
+
+Refitting GRU on all data (epochs=57, lr=0.00100)
+  [GRU] Epoch 1/57 | train loss 1.30730
+  [GRU] Epoch 10/57 | train loss 1.22131
+  [GRU] Epoch 20/57 | train loss 1.20040
+  [GRU] Epoch 30/57 | train loss 1.16862
+  [GRU] Epoch 40/57 | train loss 1.13345
+  [GRU] Epoch 50/57 | train loss 1.09527
+  [GRU] Epoch 57/57 | train loss 1.06104
+
+Refitting Transformer on all data (epochs=57, lr=0.00100)
+  [Transformer] Epoch 1/57 | train loss 1.30889
+  [Transformer] Epoch 10/57 | train loss 1.27735
+  [Transformer] Epoch 20/57 | train loss 1.22653
+  [Transformer] Epoch 30/57 | train loss 1.22251
+  [Transformer] Epoch 40/57 | train loss 1.20840
+  [Transformer] Epoch 50/57 | train loss 1.19391
+  [Transformer] Epoch 57/57 | train loss 1.16370
+
+Refitting Transformer-MT on all data (epochs=57, lr=0.00100)
+  [Transformer-MT] Epoch 1/57 | train loss 1.32256
+  [Transformer-MT] Epoch 10/57 | train loss 1.24814
+  [Transformer-MT] Epoch 20/57 | train loss 1.20953
+  [Transformer-MT] Epoch 30/57 | train loss 1.17708
+  [Transformer-MT] Epoch 40/57 | train loss 1.10384
+  [Transformer-MT] Epoch 50/57 | train loss 1.00526
+  [Transformer-MT] Epoch 57/57 | train loss 0.92559
+
+Refitting SAG-LSTM on all data (epochs=10, lr=0.00030)
+  [SAG-LSTM] Epoch 1/10 | train loss 1.32027
+  [SAG-LSTM] Epoch 10/10 | train loss 1.24726
+
+Refitting LightGBM on all data (trees per target {'Open': 2000, 'High': 2000, 'Low': 2000, 'Close': 2000})
+C:\Users\User\AppData\Roaming\Python\Python314\site-packages\lightgbm\sklearn.py:1106: LGBMDeprecationWarning: The 
+argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+C:\Users\User\AppData\Roaming\Python\Python314\site-packages\lightgbm\sklearn.py:1106: LGBMDeprecationWarning: The 
+argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+C:\Users\User\AppData\Roaming\Python\Python314\site-packages\lightgbm\sklearn.py:1106: LGBMDeprecationWarning: The 
+argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+C:\Users\User\AppData\Roaming\Python\Python314\site-packages\lightgbm\sklearn.py:1106: LGBMDeprecationWarning: The 
+argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+
+P(close up on 2026-09-29): LSTM-Transformer 12.6%, LSTM 39.5%, GRU 66.2%, Transformer 60.6%, Transformer-MT 59.7%, SAG-LSTM 61.7%, LightGBM 41.5%, Chronos-Bolt 46.8%, Ensemble (mean) 57.5%, Ensemble (RMSE-weighted) 57.6%, Ensemble (stacked) 53.0%
+
+Predictions for 2026-09-29 (last close 4,127.38 on 2026-09-28):
+                            Open    High     Low   Close
+LSTM-Transformer         4127.09 4152.75 4054.80 4091.05
+LSTM                     4127.71 4171.30 4058.39 4105.61
+GRU                      4128.49 4184.97 4078.07 4134.90
+Transformer              4128.21 4173.88 4087.82 4133.24
+Transformer-MT           4127.68 4170.39 4097.49 4139.18
+SAG-LSTM                 4128.90 4182.67 4085.31 4133.86
+LightGBM                 4128.73 4163.74 4027.75 4076.14
+Chronos-Bolt             4294.03 4294.03 4088.68 4120.71
+Ensemble (mean)          4128.58 4176.32 4069.74 4119.54
+Ensemble (RMSE-weighted) 4128.58 4176.39 4070.01 4119.79
+Ensemble (stacked)       4128.34 4178.46 4075.44 4129.03
+
+======================================================================
+MODELS SORTED BY RMSE (backtest hold-out, $ errors)
+======================================================================
+ Rank                    Model  Avg RMSE  Avg MAE  Open RMSE  Open MAE  High RMSE  High MAE  Low RMSE  Low MAE  Close RMSE  Close MAE  Direction %
+    1       Ensemble (stacked)     32.33    18.71       5.74      2.01      29.19     18.55     42.88    22.57       51.51      31.70        52.49
+    2                 SAG-LSTM     32.35    18.66       5.75      2.09      29.47     18.63     42.99    22.29       51.19      31.61        52.49
+    3 Ensemble (RMSE-weighted)     32.52    19.03       5.78      2.07      29.48     18.75     42.98    22.93       51.84      32.38        53.22
+    4          Ensemble (mean)     32.53    19.04       5.78      2.07      29.49     18.76     42.99    22.93       51.85      32.38        53.10
+    5              Transformer     33.04    19.34       5.91      2.08      29.51     18.72     43.73    23.48       53.01      33.09        49.09
+    6                 LightGBM     33.57    19.56       5.69      1.84      30.27     19.55     44.33    23.49       54.00      33.34        51.28
+    7                      GRU     33.74    19.88       6.34      2.57      31.56     19.55     43.70    24.00       53.39      33.42        52.98
+    8                     LSTM     34.55    20.20       6.24      2.56      31.83     19.63     44.35    24.36       55.78      34.26        53.10
+    9           Transformer-MT     35.33    20.65       6.41      2.48      33.85     20.48     44.52    24.55       56.53      35.10        50.67
+   10    Naive (today's close)     40.72    23.93       5.70      1.80      47.16     32.00     58.32    30.12       51.71      31.80          NaN
+   11         LSTM-Transformer     43.92    27.01       6.02      2.66      38.77     24.54     55.57    33.11       75.34      47.72        52.25
+   12             Chronos-Bolt     56.76    33.22      59.59     34.90      52.88     31.22     55.31    31.75       59.25      35.01        53.83
+
+Saved C:\Users\User\xau_usd_predictions\outputs\results.json and C:\Users\User\xau_usd_predictions\outputs\backtest_predictions.csv
+Removed 1 duplicate date row(s)
+Rows: 8261 | Date range: 1995-01-02 to 2026-09-28
+Saved C:\Users\User\xau_usd_predictions\outputs\backtest_ohlc.csv: 823 days x 11 models (max difference vs stored RMSE: 0.000000)
+Saved 6 neural models + LightGBM + preprocessing to C:\Users\User\xau_usd_predictions\outputs\models

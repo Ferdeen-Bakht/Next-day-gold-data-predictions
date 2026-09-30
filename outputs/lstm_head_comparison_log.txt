@@ -1,0 +1,47 @@
+Using device: cpu
+Removed 1 duplicate date row(s)
+Rows: 8258 | Date range: 1995-01-02 to 2026-09-23
+Labelled rows: 8226
+Train 6661 | Val 741 | Test 823 (2023-07-24 to 2026-09-22)
+
+======================================================================
+Architecture 1: LSTM -> Linear head (current)
+======================================================================
+  [LSTM-Linear] Epoch 1/57 | train loss 1.00024 | val loss 0.59066 | val RMSE(return) 0.00657
+  [LSTM-Linear] Epoch 10/57 | train loss 0.86450 | val loss 0.53655 | val RMSE(return) 0.00625
+  [LSTM-Linear] Epoch 20/57 | train loss 0.85570 | val loss 0.53511 | val RMSE(return) 0.00624
+  [LSTM-Linear] Epoch 24/57 | train loss 0.84796 | val loss 0.53832 | val RMSE(return) 0.00625 | early stop, best epoch 16
+
+======================================================================
+Architecture 2: LSTM -> learned representation -> small MLP head
+======================================================================
+  [LSTM-MLP] Epoch 1/57 | train loss 1.00555 | val loss 0.57692 | val RMSE(return) 0.00645
+  [LSTM-MLP] Epoch 10/57 | train loss 0.86883 | val loss 0.53612 | val RMSE(return) 0.00623
+  [LSTM-MLP] Epoch 20/57 | train loss 0.86072 | val loss 0.53334 | val RMSE(return) 0.00622
+  [LSTM-MLP] Epoch 30/57 | train loss 0.84925 | val loss 0.53455 | val RMSE(return) 0.00624
+  [LSTM-MLP] Epoch 31/57 | train loss 0.84582 | val loss 0.53513 | val RMSE(return) 0.00624 | early stop, best epoch 23
+
+======================================================================
+Architecture 3: LSTM -> (frozen) learned representation -> LightGBM head
+======================================================================
+Reusing Architecture 2's trained encoder, frozen, so architectures 2 and 3 share the exact same representation and only the head differs.
+C:\Users\User\AppData\Roaming\Python\Python314\site-packages\lightgbm\sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+C:\Users\User\AppData\Roaming\Python\Python314\site-packages\lightgbm\sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+C:\Users\User\AppData\Roaming\Python\Python314\site-packages\lightgbm\sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+C:\Users\User\AppData\Roaming\Python\Python314\site-packages\lightgbm\sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+Best trees per target: {'Open': 98, 'High': 89, 'Low': 110, 'Close': 3}
+
+======================================================================
+RESULTS SORTED BY AVERAGE RMSE (hold-out, $ errors)
+======================================================================
+ Rank                            Architecture  Avg RMSE  Avg MAE  Open RMSE  Open MAE  High RMSE  High MAE  Low RMSE  Low MAE  Close RMSE  Close MAE  Direction %
+    1           LSTM -> Linear head (current)    32.142   18.793      5.686     1.870     29.136    18.816    42.687   22.817      51.060     31.670       50.547
+    2      LSTM -> representation -> MLP head    32.293   18.652      5.699     1.859     29.168    18.573    42.984   22.494      51.321     31.681       52.977
+    3 LSTM -> representation -> LightGBM head    32.304   18.577      5.881     1.987     29.296    18.545    42.702   22.229      51.336     31.547       55.043
+    4                   Naive (today's close)    40.558   23.815      5.689     1.789     47.145    31.965    57.978   29.870      51.419     31.635          NaN
+
+Saved C:\Users\User\xau_usd_predictions\outputs\lstm_head_comparison.csv

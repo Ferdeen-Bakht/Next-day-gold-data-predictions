@@ -1,0 +1,32 @@
+Removed 1 duplicate date row(s)
+Rows: 8261 | Date range: 1995-01-02 to 2026-09-28
+Latest data 2026-09-28 -> forecasting 2026-09-29 with models trained through 2026-09-25 (no retraining)
+  EEMD: decomposed 1 windows in 0s (8229 from cache)
+C:\Users\User\xau_usd_predictions\train_predict.py:381: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.transformer = nn.TransformerEncoder(encoder_layer, num_layers=num_layers)
+C:\Users\User\xau_usd_predictions\train_predict.py:442: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.encoder = nn.TransformerEncoder(encoder_layer, num_layers=num_layers)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/143 [00:00<?, ?it/s]Loading weights:  20%|##        | 29/143 [00:00<00:00, 227.68it/s]Loading weights: 100%|##########| 143/143 [00:00<00:00, 1061.95it/s]
+
+Predictions for 2026-09-29 (last close 4,127.38 on 2026-09-28):
+                            Open    High     Low   Close  P(up)
+LSTM-Transformer         4128.27 4163.33 4092.90 4128.54   0.53
+LSTM                     4126.70 4175.05 4060.74 4109.70   0.48
+GRU                      4127.11 4176.49 4068.07 4114.65   0.56
+Transformer              4128.30 4169.62 4078.57 4122.12   0.53
+Transformer-MT           4128.33 4170.45 4083.56 4125.97   0.56
+SAG-LSTM                 4128.44 4182.78 4080.11 4132.25   0.56
+LightGBM                 4128.57 4167.25 4024.37 4063.51   0.33
+Chronos-Bolt             4294.03 4294.03 4088.68 4120.71   0.47
+Ensemble (mean)          4127.93 4172.69 4078.08 4123.15   0.52
+Ensemble (RMSE-weighted) 4127.93 4172.68 4078.10 4123.16   0.52
+Ensemble (stacked)       4127.82 4177.10 4080.87 4126.20   0.53
+  Ensemble (mean) forecast for 2026-09-23: close 4,355.82 vs actual 4,287.51 (error +68.31), Up/Down call wrong
+  Ensemble (stacked) forecast for 2026-09-23: close 4,357.15 vs actual 4,287.51 (error +69.64), Up/Down call wrong
+  Ensemble (mean) forecast for 2026-09-24: close 4,287.98 vs actual 4,278.52 (error +9.46), Up/Down call wrong
+  Ensemble (stacked) forecast for 2026-09-24: close 4,290.33 vs actual 4,278.52 (error +11.81), Up/Down call wrong
+  Ensemble (mean) forecast for 2026-09-28: close 4,282.24 vs actual 4,127.38 (error +154.86), Up/Down call right
+  Ensemble (stacked) forecast for 2026-09-28: close 4,281.36 vs actual 4,127.38 (error +153.98), Up/Down call right
+
+Saved C:\Users\User\xau_usd_predictions\outputs\results.json and C:\Users\User\xau_usd_predictions\outputs\forecast_log.csv

@@ -1,0 +1,47 @@
+﻿Removed 1 duplicate date row(s)
+Rows: 8258 | Date range: 1995-01-02 to 2026-09-23
+Refitting the final models on data through 2026-09-22 (same data as results.json)
+python : C:\Users\User\xau_usd_predictions\train_predict.py:369: UserWarning: enable_nested_tensor is True, but 
+self.use_nested_tensor is False because encoder_layer.norm_first was True
+At line:1 char:340
++ ... redictions; python -u train_predict.py --save-models *> outputs\save_ ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\User\x..._first was True:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  self.transformer = nn.TransformerEncoder(encoder_layer, num_layers=num_layers)
+C:\Users\User\xau_usd_predictions\train_predict.py:473: UserWarning: enable_nested_tensor is True, but 
+self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.transformer = nn.TransformerEncoder(encoder_layer, num_layers=num_layers)
+C:\Users\User\xau_usd_predictions\train_predict.py:531: UserWarning: enable_nested_tensor is True, but 
+self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.temporal_encoder = nn.TransformerEncoder(encoder_layer, num_layers=num_layers)
+C:\Users\User\xau_usd_predictions\train_predict.py:430: UserWarning: enable_nested_tensor is True, but 
+self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.encoder = nn.TransformerEncoder(encoder_layer, num_layers=num_layers)
+  CNN-BiLSTM-Attn: 3 epochs
+  LSTM-Transformer: 25 epochs
+  EEMD-TCN-GRU: 6 epochs
+  Helformer: 15 epochs
+  LSTM: 15 epochs
+  GRU: 19 epochs
+  Transformer: 3 epochs
+  PatchTST: 22 epochs
+  TFT: 3 epochs
+  Transformer-MT: 7 epochs
+  SAG-LSTM: 3 epochs
+Saved 11 neural models + LightGBM + preprocessing to C:\Users\User\xau_usd_predictions\outputs\models
+
+Reproduction check (max $ difference vs the stored forecast for 2026-09-23, per model):
+  CNN-BiLSTM-Attn        0.0000
+  LSTM-Transformer       0.0000
+  EEMD-TCN-GRU           0.0000
+  Helformer              0.0000
+  LSTM                   0.0000
+  GRU                    0.0000
+  Transformer            0.0000
+  PatchTST               0.0000
+  TFT                    0.0000
+  Transformer-MT         0.0000
+  SAG-LSTM               0.0000
+  LightGBM               0.0000
